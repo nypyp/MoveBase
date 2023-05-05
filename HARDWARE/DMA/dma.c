@@ -139,8 +139,8 @@ void get_odom(void)
 	float X_right = Encoder_Right * rate_encoder; //右轮单位时间位移
 	float inc_Wheel_x = (X_left + X_right) / 2;	//轮子x方向上的位移增量
 	//float inc_Angular = (X_right - X_left) / (2 * distance_wheels);	//角度增量，单位为弧度值
-	Vx_left = X_left / delta_t;
-	Vx_right = X_right / delta_t;
+	Vx_left =  Encoder_Left * Frequency * Perimeter / puls_round; //每秒脉冲数 / 每周脉冲数 * 周长 = 每秒转动的距离m/s X_left / delta_t;
+	Vx_right = Encoder_Right * Frequency * Perimeter / puls_round;
 	//sum_Angular += inc_Angular;
 	//sum_Angular = fmod(sum_Angular,3.14159 * 2); 
 	sum_Pose_x = sum_Pose_x + inc_Wheel_x * cos(yaw);
@@ -247,16 +247,23 @@ u8 get_data_analyze(uint8_t	*pdata)
 *************************************************/
 MotorVelocity get_puls_analyze(rcv_data cmd_vel_data, int Max_Vx_puls, int Max_Angular_delta)
 {
-	float base_v;
-	float angular_v;
+	float leftV;
+	float rightV;
 	MotorVelocity motor;
 	motor.v_left = 0.0;
 	motor.v_right = 0.0;
 	
-	base_v = cmd_vel_data.linear_vx.fv*delta_t/rate_encoder;//速度*采样周期/脉冲数距离比例=脉冲数 //cmd_vel_data.linear_vx.fv* Max_Vx_puls;
-	angular_v = cmd_vel_data.angular_v.fv * Max_Angular_delta / 2;
-	motor.v_left = base_v - angular_v;
-	motor.v_right = base_v + angular_v;
+	//base_v = cmd_vel_data.linear_vx.fv*delta_t/rate_encoder;//速度*采样周期/脉冲数距离比例=脉冲数 //cmd_vel_data.linear_vx.fv* Max_Vx_puls;
+	//angular_v = cmd_vel_data.angular_v.fv * Max_Angular_delta / 2;
+	
+	leftV = cmd_vel_data.linear_vx.fv - cmd_vel_data.angular_v.fv * distance_wheels; //运动学逆解，计算出左轮的速度 m/s
+	rightV = cmd_vel_data.linear_vx.fv + cmd_vel_data.angular_v.fv * distance_wheels;
+	motor.v_left = leftV * puls_round / ( Frequency * Perimeter);	//从速度计算出每10ms采样时的目标脉冲数
+	motor.v_right = rightV * puls_round / ( Frequency * Perimeter);
+	if (motor.v_left > 0 && motor.v_left > Max_Vx_puls) motor.v_left=Max_Vx_puls; //限幅
+	if (motor.v_left < 0 && motor.v_left < -Max_Vx_puls) motor.v_left=-Max_Vx_puls;
+	if (motor.v_right > 0 && motor.v_right > Max_Vx_puls) motor.v_right=Max_Vx_puls;
+	if (motor.v_right < 0 && motor.v_right < -Max_Vx_puls) motor.v_right=-Max_Vx_puls;
 	
 	return motor;
 }

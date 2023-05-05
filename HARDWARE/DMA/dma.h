@@ -4,11 +4,13 @@
 #include "stdio.h"
 #include "string.h"
 
-#define odem_data_size 27
-#define distance_wheels 0.1	//两轮间距的一半
-#define radius_wheel 0.0242		//轮子半径
-#define puls_round 3131			//编码器旋转一圈脉冲数
-#define rate_encoder 0.0000425892 //(radius_wheel * 2 * 3.14159 / puls_round) 由于puls_round未知，通过旋转小车一周，测得左右轮脉冲数差值直接计算得到	
+#define odem_data_size 	27
+#define distance_wheels 0.1				//两轮间距的一半
+#define radius_wheel 	0.0242			//轮子半径
+#define Perimeter 		0.152052956		//2*radius_wheel*3.14159	//周长
+#define Frequency 		100				//每秒采样编码器脉冲数的频率
+#define puls_round 		3120			//编码器旋转一圈脉冲数=2*2*13*60=2(两路脉冲) * 2(上下沿计数) * 13(霍尔编码器一般都是13线即每圈13个脉冲) * 60 (电机减速比）=
+#define rate_encoder 	0.0000487349	//(radius_wheel * 2 * 3.14159 / puls_round) 由于puls_round未知，通过旋转小车一周，测得左右轮脉冲数差值直接计算得到	
 #define USART1TXBuff_Size 64
 #define USART1RXBuff_Size 14
 
