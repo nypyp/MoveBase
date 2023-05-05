@@ -2,12 +2,14 @@
 #define __MOTOR_H
 #include "sys.h"
 
-#define PWMA   TIM3->CCR1  
-#define AIN1   PAout(5)
-#define AIN2   PAout(4)
-#define PWMB   TIM3->CCR2 
-#define BIN1   PCout(5)
-#define BIN2   PCout(4)
+#define PWMAIN1   TIM3->CCR1
+#define PWMAIN2   TIM3->CCR2
+#define AIN1   PAout(6)
+#define AIN2   PAout(7)
+#define PWMBIN1   TIM3->CCR3
+#define PWMBIN2   TIM3->CCR4
+#define BIN1   PBout(0)
+#define BIN2   PBout(1)
 
 void Motor_Init(void);
 void MOTOR_PWM_Init(u16 arr, u16 psc);

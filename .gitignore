@@ -1,2 +1,8 @@
 # 忽略obj中的文件
 OBJ
+*.crf
+*.o
+*.dep
+*.axf
+*.htm
+*.hex
