@@ -32,11 +32,11 @@ extern PID_LocTypeDef PID_Left;
 extern PID_LocTypeDef* sPID_Left;
 extern PID_LocTypeDef PID_Right;
 extern PID_LocTypeDef* sPID_Right;
-void Encoder_Init_TIM2(void);
+void Encoder_Init_TIM8(void);
 void Encoder_Init_TIM4(void);
 int Read_Encoder(u8 TIMX);
 float PID_Loc(float SetValue, float ActualValue, PID_LocTypeDef* PID);
 void PID_Init(PID_LocTypeDef* PID,int max_speed,int max_wheel_diff);
 void TIM4_IRQHandler(void);
-void TIM2_IRQHandler(void);
+void TIM8_IRQHandler(void);
 #endif

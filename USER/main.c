@@ -36,7 +36,7 @@ int main(void)
 	}
 	PID_Init(sPID_Left,50,40);//左电机max脉冲：85
 	PID_Init(sPID_Right,50,40);//右电机max脉冲：83
-	Encoder_Init_TIM2();
+	Encoder_Init_TIM8();
 	Encoder_Init_TIM4();
 	//printf("encoder init success");
 //	OLED_Init();

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Movebase.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Movebase.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Fri May 05 19:34:57 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed May 10 16:59:33 2023
 <BR><P>
 <H3>Maximum Stack Usage =        312 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -79,7 +79,7 @@ Function Pointers
  <LI><a href="#[29]">TIM1_CC_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[28]">TIM1_TRG_COM_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[27]">TIM1_UP_IRQHandler</a> from timer.o(i.TIM1_UP_IRQHandler) referenced from startup_stm32f10x_hd.o(RESET)
- <LI><a href="#[2a]">TIM2_IRQHandler</a> from encoder.o(i.TIM2_IRQHandler) referenced from startup_stm32f10x_hd.o(RESET)
+ <LI><a href="#[2a]">TIM2_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[2b]">TIM3_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[2c]">TIM4_IRQHandler</a> from encoder.o(i.TIM4_IRQHandler) referenced from startup_stm32f10x_hd.o(RESET)
  <LI><a href="#[40]">TIM5_IRQHandler</a> from startup_stm32f10x_hd.o(.text) referenced from startup_stm32f10x_hd.o(RESET)
@@ -369,6 +369,9 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[28]"></a>TIM1_TRG_COM_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
+</UL>
+<P><STRONG><a name="[2a]"></a>TIM2_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[2b]"></a>TIM3_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
@@ -692,8 +695,8 @@ Global Symbols
 <P><STRONG><a name="[b]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[85]"></a>Encoder_Init_TIM2</STRONG> (Thumb, 150 bytes, Stack size 40 bytes, encoder.o(i.Encoder_Init_TIM2))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Encoder_Init_TIM2 &rArr; TIM_ICInit &rArr; TI4_Config
+<P><STRONG><a name="[85]"></a>Encoder_Init_TIM4</STRONG> (Thumb, 148 bytes, Stack size 40 bytes, encoder.o(i.Encoder_Init_TIM4))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Encoder_Init_TIM4 &rArr; TIM_ICInit &rArr; TI4_Config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
@@ -711,12 +714,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[92]"></a>Encoder_Init_TIM4</STRONG> (Thumb, 148 bytes, Stack size 40 bytes, encoder.o(i.Encoder_Init_TIM4))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Encoder_Init_TIM4 &rArr; TIM_ICInit &rArr; TI4_Config
+<P><STRONG><a name="[92]"></a>Encoder_Init_TIM8</STRONG> (Thumb, 148 bytes, Stack size 40 bytes, encoder.o(i.Encoder_Init_TIM8))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Encoder_Init_TIM8 &rArr; TIM_ICInit &rArr; TI4_Config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseStructInit
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCounter
@@ -737,8 +739,8 @@ Global Symbols
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_IIC_Init
 </UL>
 
@@ -1066,8 +1068,7 @@ Global Symbols
 
 <P><STRONG><a name="[86]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOTOR_PWM_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[cb]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphResetCmd))
@@ -1080,8 +1081,8 @@ Global Symbols
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_IIC_Init
 </UL>
 
@@ -1095,7 +1096,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[c5]"></a>Read_Encoder</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, encoder.o(i.Read_Encoder))
+<P><STRONG><a name="[c5]"></a>Read_Encoder</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, encoder.o(i.Read_Encoder))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 </UL>
 
@@ -1154,9 +1155,6 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[2a]"></a>TIM2_IRQHandler</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, encoder.o(i.TIM2_IRQHandler))
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
-</UL>
 <P><STRONG><a name="[2c]"></a>TIM4_IRQHandler</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, encoder.o(i.TIM4_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
@@ -1166,8 +1164,8 @@ Global Symbols
 
 <P><STRONG><a name="[8e]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearFlag))
 <BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Int_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[c4]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
@@ -1177,8 +1175,8 @@ Global Symbols
 <P><STRONG><a name="[91]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_Cmd))
 <BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Int_Init
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOTOR_PWM_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[c2]"></a>TIM_DeInit</STRONG> (Thumb, 464 bytes, Stack size 8 bytes, stm32f10x_tim.o(i.TIM_DeInit))
@@ -1193,8 +1191,8 @@ Global Symbols
 <P><STRONG><a name="[8b]"></a>TIM_EncoderInterfaceConfig</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_EncoderInterfaceConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_EncoderInterfaceConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[c3]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
@@ -1213,19 +1211,19 @@ Global Symbols
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI2_Config
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TI1_Config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[8c]"></a>TIM_ICStructInit</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ICStructInit))
-<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[8f]"></a>TIM_ITConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ITConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Int_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[96]"></a>TIM_OC1Init</STRONG> (Thumb, 114 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_OC1Init))
@@ -1269,8 +1267,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[90]"></a>TIM_SetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCounter))
-<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[cf]"></a>TIM_SetIC1Prescaler</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetIC1Prescaler))
@@ -1294,13 +1292,13 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_Int_Init
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOTOR_PWM_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[89]"></a>TIM_TimeBaseStructInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_TimeBaseStructInit))
-<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 </UL>
 
 <P><STRONG><a name="[33]"></a>USART1_IRQHandler</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, usart.o(i.USART1_IRQHandler))
@@ -1805,8 +1803,8 @@ Global Symbols
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOTOR_PWM_Init
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM2
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM8
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encoder_Init_TIM4
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_USART1_NVIC_config
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_USART1_Init
 </UL>
