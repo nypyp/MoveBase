@@ -24,16 +24,16 @@ u8 MPU_Init(void)
   GPIO_InitTypeDef  GPIO_InitStructure;
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);//使能AFIO时钟 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);//先使能外设IO PORTA时钟 
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);//先使能外设IO PORTA时钟 
 	
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;	 // 端口配置
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;	 // 端口配置
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //推挽输出
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
-  GPIO_Init(GPIOA, &GPIO_InitStructure);					 //根据设定参数初始化GPIOA
+  GPIO_Init(GPIOB, &GPIO_InitStructure);					 //根据设定参数初始化GPIOA
 
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);//禁止JTAG,从而PA15可以做普通IO使用,否则PA15不能做普通IO!!!
 	
-	MPU_AD0_CTRL=0;			//控制MPU6050的AD0脚为低电平,从机地址为:0X68
+	MPU_INT_CTRL=0;			//控制MPU6050的AD0脚为低电平,从机地址为:0X68
 	
 	MPU_IIC_Init();//初始化IIC总线
 	MPU_Write_Byte(MPU_PWR_MGMT1_REG,0X80);	//复位MPU6050

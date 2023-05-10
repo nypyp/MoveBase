@@ -5,4 +5,4 @@ OBJ/*.dep
 OBJ/*.axf
 OBJ/*.htm
 OBJ/*.hex
-OBJ/
+/OBJ/
