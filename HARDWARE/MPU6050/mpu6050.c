@@ -33,7 +33,7 @@ u8 MPU_Init(void)
 
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);//禁止JTAG,从而PA15可以做普通IO使用,否则PA15不能做普通IO!!!
 	
-	MPU_INT_CTRL=0;			//控制MPU6050的AD0脚为低电平,从机地址为:0X68
+	MPU_INT_CTRL=1;			//控制MPU6050的AD0脚为低电平,从机地址为:0X68
 	
 	MPU_IIC_Init();//初始化IIC总线
 	MPU_Write_Byte(MPU_PWR_MGMT1_REG,0X80);	//复位MPU6050

@@ -57,8 +57,8 @@ void TIM1_UP_IRQHandler(void)   //TIM3中断
 			TIM_ClearITPendingBit(TIM1, TIM_IT_Update);  //清除TIMx的中断待处理位:TIM 中断源.
 //			DISPLAY_FLAG++;
 			DATAPACK_FREQ ++;
-			Encoder_Left =  Read_Encoder(4);	//正转时编码器读数为负，反转时为正，所以取相反数
-			Encoder_Right=  - Read_Encoder(2);
+			Encoder_Left = - Read_Encoder(4);	//正转时编码器读数为负，反转时为正，所以取相反数
+			Encoder_Right=  Read_Encoder(8);
 //			Lpuls_sum = Lpuls_sum - Encoder_Left;
 //			Rpuls_sum = Rpuls_sum + Encoder_Right;
 			PID_SetValue = get_puls_analyze(cmd_vel_data,sPID_Left->Max_speed,sPID_Left->Max_wheel_diff);
