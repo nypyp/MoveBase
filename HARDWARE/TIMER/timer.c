@@ -62,12 +62,12 @@ void TIM1_UP_IRQHandler(void)   //TIM3ÖÐ¶Ï
 //			Lpuls_sum = Lpuls_sum - Encoder_Left;
 //			Rpuls_sum = Rpuls_sum + Encoder_Right;
 			PID_SetValue = get_puls_analyze(cmd_vel_data,sPID_Left->Max_speed,sPID_Left->Max_wheel_diff);
-			PID_MOTOR_L=PID_Loc(PID_SetValue.v_left,Encoder_Left,sPID_Left);
-			PID_MOTOR_R=PID_Loc(PID_SetValue.v_right,Encoder_Right,sPID_Right);
-			//PID_MOTOR_L=PID_Loc(-30,Encoder_Left,sPID_Left);
-			//PID_MOTOR_R=PID_Loc(-30,Encoder_Right,sPID_Right);
-			//Set_Pwm(PID_MOTOR_L,PID_MOTOR_R);
-			Set_Pwm(60,0);
+//			PID_MOTOR_L=PID_Loc(PID_SetValue.v_left,Encoder_Left,sPID_Left);
+//			PID_MOTOR_R=PID_Loc(PID_SetValue.v_right,Encoder_Right,sPID_Right);
+			PID_MOTOR_L=PID_Loc(100,Encoder_Left,sPID_Left);
+			PID_MOTOR_R=PID_Loc(100,Encoder_Right,sPID_Right);
+			Set_Pwm(PID_MOTOR_L,PID_MOTOR_R);
+//			Set_Pwm(20,20);
 			get_odom();
 			if(DATAPACK_FREQ >= 10)
 			{

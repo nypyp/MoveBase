@@ -22,15 +22,20 @@ Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 E:\code\Keil_v5Project\STM32F103RCT6\MoveBase\USER\MoveBase.uvprojx
-Project File Date:  05/04/2023
+Project File Date:  05/17/2023
 
 <h2>Output:</h2>
 Build target 'Movebase'
-compiling motor.c...
+compiling timer.c...
+..\HARDWARE\TIMER\timer.c(18): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+        GPIO_InitTypeDef GPIO_InitStructure;
+..\HARDWARE\TIMER\timer.c(56): warning:  #550-D: variable "PID_SetValue" was set but never used
+                        MotorVelocity PID_SetValue;
+..\HARDWARE\TIMER\timer.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=27402 RO-data=4110 RW-data=164 ZI-data=1892  
+Program Size: Code=27390 RO-data=4106 RW-data=164 ZI-data=1892  
 FromELF: creating hex file...
-"..\OBJ\Movebase.axf" - 0 Error(s), 0 Warning(s).
+"..\OBJ\Movebase.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   E:\code\Keil_v5Project\STM32F103RCT6\MoveBase\USER\RTE

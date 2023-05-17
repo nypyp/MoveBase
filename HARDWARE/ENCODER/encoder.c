@@ -36,7 +36,7 @@ void Encoder_Init_TIM8(void)
 
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7;	//端口配置
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING; //浮空输入
-	GPIO_Init(GPIOA, &GPIO_InitStructure);					      //根据设定参数初始化GPIOB
+	GPIO_Init(GPIOC, &GPIO_InitStructure);					      //根据设定参数初始化GPIOB
 
 	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
 	TIM_TimeBaseStructure.TIM_Prescaler = 0x0; // 预分频器 
@@ -115,8 +115,8 @@ int Read_Encoder(u8 TIMX)
 /************************************************
 函数名称 ： PID_Loc
 功    能 ： PID位置(Location)计算
-参    数 ： SetValue ------ 设置值(期望值)，为10ms采样周期内期望脉冲数，为百分数形式，数值在0~100之间
-            ActualValue --- 实际值(反馈值)
+参    数 ： SetValue ------ 设置值(期望值)，为10ms采样周期内期望脉冲数
+            ActualValue --- 实际值(反馈值)，为10ms采样周期内实际脉冲数
             PID ----------- PID数据结构
 返 回 值 ： PIDLoc -------- PID位置
 作    者 ： strongerHuang
