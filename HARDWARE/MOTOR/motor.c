@@ -4,16 +4,16 @@
 void Motor_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA  | RCC_APB2Periph_AFIO, ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB  | RCC_APB2Periph_AFIO, ENABLE);
 	
 	//设置GPIO初始化结构体
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7; //TIM3_CH1|TIM3_CH2
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;  //复用推挽输出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);//初始化GPIO
 	
 	//设置GPIO初始化结构体
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1; //TIM3_CH1|TIM3_CH2
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;  //复用推挽输出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -59,13 +59,13 @@ void Set_Pwm(int motor1, int motor2)
 {
 	if(motor1>0 && motor1>100) motor1 = 100;//限幅
 	if(motor1<0 && motor1<-100) motor1 = -100;
-	if(motor1<0)	PWMAIN1 = 7200,PWMAIN2=myabs(motor1)*69; //motor 范围为[0,100], 乘上“69”限幅因子后，PWM范围为[0,6900]
-	else			PWMAIN2 = 7200,PWMAIN1=myabs(motor1)*69;
+	if(motor1<0)	PWMAIN1 = 0,PWMAIN2=myabs(motor1)*69; //motor 范围为[0,100], 乘上“69”限幅因子后，PWM范围为[0,6900]
+	else			PWMAIN2 = 0,PWMAIN1=myabs(motor1)*69;
 	
 	if(motor2>0 && motor2>100) motor2 = 100;//限幅
 	if(motor2<0 && motor2<-100) motor2 = -100;
-	if(motor2<0)	PWMBIN1 = 7200,PWMBIN2=myabs(motor2)*69; //驱动AT8236输入IN1:1 IN2:PWM 为慢衰减模式正转，详情查看芯片数据手册
-	else			PWMBIN2 = 7200,PWMBIN1=myabs(motor2)*69;
+	if(motor2<0)	PWMBIN1 = 7199,PWMBIN2=myabs(motor2)*69; //驱动AT8236输入IN1:1 IN2:PWM 为慢衰减模式正转，详情查看芯片数据手册
+	else			PWMBIN2 = 7199,PWMBIN1=myabs(motor2)*69;
  
 }
 

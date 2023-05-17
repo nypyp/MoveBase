@@ -66,8 +66,8 @@ void TIM1_UP_IRQHandler(void)   //TIM3ÖÐ¶Ï
 			PID_MOTOR_R=PID_Loc(PID_SetValue.v_right,Encoder_Right,sPID_Right);
 			//PID_MOTOR_L=PID_Loc(-30,Encoder_Left,sPID_Left);
 			//PID_MOTOR_R=PID_Loc(-30,Encoder_Right,sPID_Right);
-			Set_Pwm(PID_MOTOR_L,PID_MOTOR_R);
-			//Set_Pwm(30,0);
+			//Set_Pwm(PID_MOTOR_L,PID_MOTOR_R);
+			Set_Pwm(60,0);
 			get_odom();
 			if(DATAPACK_FREQ >= 10)
 			{
